@@ -1,0 +1,68 @@
+doctype html
+html(lang="en")
+	head
+		title Attributes Example
+		style.
+			.divColored{
+				padding: 5px;
+				color:#dadada;
+			}
+			.tdSize { width:300px; padding-left:40px; }
+			.dvPadding { padding:10px; }
+			.tdborderTop {border-top:1px solid #c8c8c8;}
+			.tdTextStyle { text-align : center; color:red }
+			.ttl { font-size:28px; font-weigth:bold; text-align:center; }
+
+		script(type="text/javascript").
+			function testingAttributes(){
+				alert("this is atributes example");
+			}
+	body
+		h1 Jade - Attributes 
+		table(
+			style="border:1px solid #dadada;",
+			cellspacing="0",
+			cellspading="0"
+		)
+			tr
+				td.tdSize
+					span(style="font-size:28px; font-weigth:bold") A  
+					span(style="font-size:18px; font-weigth:bold") with href atributes
+					div.divColored(id="td.dvContent")
+						a(href="www.google.com") google.com
+				td.tdSize
+					div 
+						span(style="font-size:28px; font-weigth:bold") div.classname  
+						span(style="font-size:18px; font-weigth:bold") define div with .class
+						div.divColored this is a test with class parm	
+			tr
+				
+				td.tdborderTop(colspan="2")
+					div.dvPadding this is an element button into div with long attributes 
+					div.dvPadding 
+						input(type="button",name="probando",value="Click On Me",onclick="testingAttributes();")
+						span(style="font-size:85%; padding-left:30px; color: gray;") button with long attributes
+			tr
+				- var classes = ['tdborderTop' , 'tdTextStyle']
+				td.dvPadding(class=classes,colspan="2") 
+					span(style="font-size:28px; font-weigth:bold") TD with 2 clases defined y Javascript Array
+					div this is TD element with 2 clases defined in Style Secction and javascript Array 
+			tr
+				td(class=['tdborderTop'],colspan="2")
+					span.ttl .dvPadding 
+					.dvPadding 
+						.tdTextStyle This is Div but with out defined tag div 
+			tr
+				td.tdborderTop(colspan="2")
+					span.ttl div#id
+					div#idUnico(style='text-align:center;')&attributes({'class':'dvPadding'})	Div with ID defined in tag 'div#ID -- div#idUnico'
+			tr
+				td.tdborderTop(colspan="2")
+					span.ttl <escaped>!attributes
+					- var attributes = {'class': 'dvPadding', 'name':'idCon2'};
+					div#foo&attributes(attributes) Div with &attributes parameter
+
+
+
+
+					

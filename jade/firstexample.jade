@@ -1,0 +1,19 @@
+html
+	head
+		title Primer Jade
+		script.
+			function hola_mundo(){
+				alert("hola mundo");
+			}
+	body
+		div(id="idAttr") Div con atributo ID 
+		table
+			tr
+				td
+					div hola mundo
+					table(border="1px solid #dadada;")
+						tr
+							td esto es un ejemplo de tablas
+							td 
+								h1(id="title") Welcome to Jade
+								button(class="btn", data-action="bea", onclick="hola_mundo();") Be Awesome

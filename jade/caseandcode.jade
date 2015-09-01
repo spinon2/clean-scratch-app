@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		title Case And Code - Jade
+		script(type="text/javascript").
+			var numItems = 10;
+		style.
+			.tble { width:500px; text-align:center; }
+			.tble td { padding:20px 30px; }
+			.red { text-align:center; color:red; }
+			.blue { text-align:center; color:blue; }
+			.green { text-align:center; color:green; }
+
+	body
+		table.tble
+			tr
+				td
+					- var numItems = 20
+					case numItems
+						when 10: .red this is a red div with #{numItems} values
+						when 20: .blue this is a red div with #{numItems} values
+						when 30: .green this is a red div with #{numItems} values
+						default
+							div thi a default div with othervalues #{numItems} Values
+			tr
+				td
+					ul
+					- for (var x = 0; x < 3; x++)
+						li= 'item num = {#x} '
+			tr
+				td
+					ul
+					- list = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
+						each item in list
+							li= item
+
+			
+
+
+

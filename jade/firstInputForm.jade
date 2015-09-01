@@ -1,0 +1,24 @@
+doctype html
+html
+	head
+		title hola JADE	
+		script.
+				var jade = require('jade');	
+				var fn = jade.compile(jadeTemplate);
+				var htmlOutput = fn({
+				  maintainer: {
+				    name: 'Forbes Lindesay',
+				    twitter: '@ForbesLindesay',
+				    blog: 'forbeslindesay.co.uk'
+				  }
+				});
+	body
+			h1 welcome to jade
+			div(id="table nap")
+				table
+					tr
+						td(id="uno")
+							form(name="login", action="/login", method="post")
+								input(type="text", name="user")
+								input(type="password", name="pass")
+								input(type="submit", value="login")

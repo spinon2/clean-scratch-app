@@ -1,0 +1,66 @@
+mixin listdiv
+	div
+		div Probando nuevo div con mixin antes del HTML
+
+mixin divWithParms(text,id)
+	div
+		div(id=id)=text
+
+mixin splitInfo
+	div.divSplit
+
+mixin mixBlock(text)
+	div
+		if block
+			block
+			.divMixIntoBlock=text
+		else
+			.divWarning This mixin has not block
+
+mixin mixWithAttributes(id,className,text)
+	div(id=id,class=className) This is div with attibutes pased in mixin attibutes
+		div(id=id,class=className)=text
+
+
+doctype html
+html(lang="en")
+	head
+		title Testing Mixins.
+		style.
+			.divSplit {
+				border-top : 1px solid #dadada;
+				margin-top : 10px;
+				margin-bottom : 10px;
+			}
+			.divWarning {
+				color	: red;
+			}
+
+			.divMixBlock {
+				color	: blue;
+			}
+
+			.divMixIntoBlock {
+				color	: green;
+			}
+	body
+		h1 This is new Mixins example
+
+
+		+listdiv
+		+listdiv
+		+splitInfo
+		+divWithParms("This div was created wth mixins with parms","div24")
+		+splitInfo
+		+mixBlock
+		+splitInfo
+		+mixBlock("This mesaje inside block ")
+			div.divMixBlock This is mixin with block
+		+splitInfo
+		+mixWithAttributes("dv1","divMixIntoBlock","Text inside mixins")
+
+
+
+
+
+

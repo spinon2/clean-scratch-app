@@ -1,0 +1,66 @@
+mixin createItem(id,classNameIcon,classNameText,text)
+	div(id=id)
+		i(class=classNameIcon)&attributes({"style":"color: #777474;"})
+			span(class=classNameText)=text
+
+mixin createListUsers(id,classNameIcon, classNameText, ...items)
+	ul
+		each item in items
+			li
+				+createItem(id,classNameIcon, classNameText, item)
+
+
+doctype html
+html(lang="en")
+	head
+		title Example FontAwesome with Mixins
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')		
+		style.
+			.desc {
+				color : #858585;
+				font-size	: 85%;
+				padding 	: 10px;
+				text-align	: center;
+			}
+			.bdyStyle {
+				margin 	: 20px;
+			}
+			.box {
+				margin-top : 10px; 
+				border : 1px solid #dadada;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				padding	: 8px;
+
+			}
+			.box ul { margin : 0px; padding : 0px; }
+			.box ul li { list-style : none; margin : 0px; padding : 0px; }
+
+			.paddLft {
+				color: #595656;
+			    font-family: tahoma;
+			    padding-left: 15px;
+			}
+			#dvTop { padding-bottom : 10px; }
+			#usrLst	{ border-top : 1px solid #dadada; padding : 5px;}
+
+
+	body.bdyStyle
+		table
+			tr
+				td(width="250px",valign="top")
+					.desc This box was created with recursive Mixins 
+					.box
+						+createItem("dvTop","fa fa-users","paddLft","Users Acces")
+						+createListUsers("usrLst","fa fa-user", "paddLft",  1, 2, 3, 4)
+
+				td(width="250px",style="padding-left:50px;",valign="top")
+					.desc This box was created with foreach list and Mixin 
+					.box
+						+createItem("dvTop","fa fa-users","paddLft","Users Acces")
+						ul
+							- list = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
+							each item in list
+								+createItem("usrLst","fa fa-user","paddLft",item)
+
